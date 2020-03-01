@@ -1,0 +1,12 @@
+<div class="container">
+    <form action="" [formGroup]="filterFormUser">
+        <div class="row" style='width: 300px;'>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" (keyup)="filterGrid()" class="form-control" formControlName="UserFilter"
+                        placeholder="Search">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

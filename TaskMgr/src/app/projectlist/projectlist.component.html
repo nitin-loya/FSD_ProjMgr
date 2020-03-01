@@ -1,0 +1,30 @@
+<app-editproject></app-editproject>
+<hr class="container">
+<app-project-filter (filterEvent)="criteria = $event"></app-project-filter>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>Project</th>
+      <th>Manager</th>
+      <th>No of Tasks</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Priority</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let project of projectList | search : criteria" ng-class="project.Status == 'C'? 'completed': ''">
+      <td>{{project.ProjectName}}</td>
+      <td>{{project.ManagerName}}</td>
+      <td>{{project.NoOfTasks}}</td>
+      <td>{{project.StartDate}}</td>
+      <td>{{project.EndDate}}</td>
+      <td>{{project.Priority}}</td>
+      <td>
+        <span class="pull-right">
+          <button class="btn btn-primary" (click)="onEdit(project)" [disabled]="project.Status == 'C'">Update</button>&nbsp;
+          <button class="btn btn-light" (click)="onEnd(project)" [disabled]="project.Status == 'C'">Suspend</button>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>

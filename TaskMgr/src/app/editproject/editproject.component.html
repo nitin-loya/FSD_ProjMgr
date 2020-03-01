@@ -1,0 +1,70 @@
+<div class="container">
+  <form [formGroup]="projectForm" (ngSubmit)="submitProject()">
+    <div class="row">
+      <div class="col-md-2"><label>Project</label></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="ProjectName" [(ngModel)]="project.ProjectName"
+            [ngClass]="{'is-invalid':submitted && projectFields.ProjectName.errors}" placeholder="Project">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"><label>Start Date</label></div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <input type="date" formControlName="StartDate" [(ngModel)]="project.StartDate" class="form-control"
+            [ngClass]="{'is-invalid':submitted && projectFields.StartDate.errors}" placeholder="Start Date">
+        </div>
+      </div>
+      <div class="col-md-2"><label>End Date</label></div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <input type="date" formControlName="EndDate" [(ngModel)]="project.EndDate" class="form-control"
+            [ngClass]="{'is-invalid':submitted && projectFields.EndDate.errors}" placeholder="End Date">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"><label>Priority</label></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <input type="range" list="prioritylist" class="form-control" min="1" max="10" value="1" step="1"
+            formControlName="Priority" [(ngModel)]="project.Priority"
+            [ngClass]="{'is-invalid':submitted && projectFields.Priority.errors}">
+          <datalist id="prioritylist">
+            <option value="1" label="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5" label="5"></option>
+            <option value="6"></option>
+            <option value="7"></option>
+            <option value="8"></option>
+            <option value="9"></option>
+            <option value="10" label="10"></option>
+          </datalist>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"><label>Manager</label></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <select value="0" [(ngModel)]="project.ManagerID" formControlName="ManagerID" class="form-control"
+            [ngClass]="{'is-invalid':submitted && projectFields.ManagerID.errors}" placeholder="Manager">
+            <option value='0'>Select Manager</option>
+            <option *ngFor="let p of userList" value="{{p.UserID}}">{{p.FullName}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-md-4 col-md-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+        &nbsp;
+        <button type="button" class="btn btn-primary" (click)="resetProject()">Reset</button></div>
+    </div>
+  </form>
+</div>

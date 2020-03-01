@@ -1,0 +1,11 @@
+<div class="container">
+  <form action="" [formGroup]="filterFormProject">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <input type="text" (keyup)="filterGrid()" class="form-control" formControlName="ProjectName" placeholder="Search">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
